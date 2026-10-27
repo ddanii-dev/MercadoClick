@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin · Productos - MercadoClick</title>
+
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-topbar">
+        <a href="../../index.html">← Volver a la tienda</a>
+
+        <nav class="admin-nav">
+            <a href="productos.html" class="activo">Productos</a>
+            <a href="pedidos.html">Pedidos</a>
+        </nav>
+    </div>
+
+    <main class="admin-wrapper">
+
+        <div class="admin-header-fila">
+            <h1>Gestión de productos</h1>
+            <button class="admin-btn-primario" id="btn-nuevo-producto">+ Nuevo producto</button>
+        </div>
+
+        <div class="admin-filtros">
+            <input type="text" id="filtro-buscar" placeholder="Buscar por nombre...">
+
+            <select id="filtro-categoria">
+                <option value="todos">Todas las categorías</option>
+                <option value="Lácteos">Lácteos</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Bebidas">Bebidas</option>
+            </select>
+        </div>
+
+        <div class="admin-tabla-contenedor">
+            <table class="admin-tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-productos">
+                    <tr>
+                        <td colspan="7" class="admin-cargando">Cargando productos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-paginacion" id="paginacion-productos"></div>
+
+    </main>
+
+    <!-- ---------------- MODAL PRODUCTO ---------------- -->
+    <div class="admin-overlay" id="overlay-producto"></div>
+    <div class="admin-modal" id="modal-producto">
+
+        <div class="admin-modal-header">
+            <h2 id="titulo-modal-producto">Nuevo producto</h2>
+            <button onclick="cerrarModalProducto()">✖</button>
+        </div>
+
+        <form id="form-producto">
+            <input type="hidden" id="prod-id">
+
+            <label for="prod-nombre">Nombre</label>
+            <input type="text" id="prod-nombre" required maxlength="150">
+
+            <label for="prod-categoria">Categoría</label>
+            <select id="prod-categoria" required>
+                <option value="Lácteos">Lácteos</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Bebidas">Bebidas</option>
+            </select>
+
+            <label for="prod-precio">Precio (COP)</label>
+            <input type="number" id="prod-precio" required min="0" step="1">
+
+            <label for="prod-stock">Stock disponible</label>
+            <input type="number" id="prod-stock" required min="0" step="1">
+
+            <label for="prod-stock-minimo">Stock mínimo (alerta)</label>
+            <input type="number" id="prod-stock-minimo" required min="0" step="1" value="5">
+
+            <label for="prod-imagen">Ruta de imagen</label>
+            <input type="text" id="prod-imagen" placeholder="assets/images/img1.png">
+
+            <label class="admin-check">
+                <input type="checkbox" id="prod-activo" checked>
+                Producto activo (visible en la tienda)
+            </label>
+
+            <button type="submit">Guardar producto</button>
+        </form>
+    </div>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/admin-productos.js"></script>
+
+</body>
+
+</html>

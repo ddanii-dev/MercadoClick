@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Perfil - MercadoClick</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/perfil.css">
+</head>
+
+<body>
+
+    <!-- ---------------- TOPBAR ---------------- -->
+    <div class="perfil-topbar">
+        <a href="../index.html">← Volver a la tienda</a>
+    </div>
+
+    <!-- ---------------- PERFIL ---------------- -->
+    <main class="perfil-wrapper">
+
+        <section class="perfil-container" id="perfil-container">
+
+            <div class="perfil-avatar" id="perfil-avatar"></div>
+
+            <h1 id="perfil-nombre"></h1>
+
+            <span class="perfil-rol" id="perfil-rol"></span>
+
+            <div class="perfil-datos">
+
+                <div class="perfil-dato">
+                    <span>Cédula</span>
+                    <span id="perfil-cedula"></span>
+                </div>
+
+                <div class="perfil-dato">
+                    <span>Correo electrónico</span>
+                    <span id="perfil-correo"></span>
+                </div>
+
+            </div>
+
+            <button class="btn-cerrar-sesion" id="perfil-cerrar-sesion">
+                Cerrar sesión
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

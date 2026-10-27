@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recuperar Contraseña - MercadoClick</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <div class="auth-icon">
+                ✦
+            </div>
+
+            <h1>¿Olvidaste tu contraseña?</h1>
+
+            <p class="auth-description">
+                Escribe tu correo y te enviaremos instrucciones para restablecerla.
+            </p>
+
+            <form id="recuperarForm">
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo" required>
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Enviar instrucciones
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                ¿Ya la recordaste?
+                <a href="login.html">Inicia sesión</a>
+            </p>
+
+        </section>
+
+
+        <section class="auth-brand">
+
+            <img src="../assets/images/logo.png" alt="MercadoClick" class="auth-logo">
+
+            <h2>Compra fácil.<br>Compra seguro.</h2>
+
+            <p>
+                Todo lo que necesitas, en un solo lugar.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

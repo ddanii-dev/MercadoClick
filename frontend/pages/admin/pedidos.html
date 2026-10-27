@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin · Pedidos - MercadoClick</title>
+
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-topbar">
+        <a href="../../index.html">← Volver a la tienda</a>
+
+        <nav class="admin-nav">
+            <a href="productos.html">Productos</a>
+            <a href="pedidos.html" class="activo">Pedidos</a>
+        </nav>
+    </div>
+
+    <main class="admin-wrapper">
+
+        <div class="admin-header-fila">
+            <h1>Gestión de pedidos</h1>
+        </div>
+
+        <div class="admin-filtros">
+            <select id="filtro-estado">
+                <option value="">Todos los estados</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="confirmado">Confirmado</option>
+                <option value="enviado">Enviado</option>
+                <option value="entregado">Entregado</option>
+                <option value="cancelado">Cancelado</option>
+            </select>
+        </div>
+
+        <div class="admin-tabla-contenedor">
+            <table class="admin-tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Productos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-pedidos">
+                    <tr>
+                        <td colspan="6" class="admin-cargando">Cargando pedidos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-paginacion" id="paginacion-pedidos"></div>
+
+    </main>
+
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/admin-pedidos.js"></script>
+
+</body>
+
+</html>

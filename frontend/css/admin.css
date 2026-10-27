@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background: #f5f6fa;
+    min-height: 100vh;
+}
+
+/* ================= TOPBAR ================= */
+.admin-topbar {
+    background: white;
+
+    padding: 18px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+.admin-topbar a {
+    text-decoration: none;
+    color: #333;
+
+    font-weight: 600;
+    font-size: .9rem;
+
+    transition: .3s;
+}
+
+.admin-topbar a:hover {
+    color: #0077ff;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-nav a {
+    padding: 8px 16px;
+
+    border-radius: 8px;
+
+    background: #f2f4f8;
+}
+
+.admin-nav a.activo {
+    background: #0077ff;
+    color: white;
+}
+
+/* ================= CONTENIDO ================= */
+.admin-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    padding: 35px 20px 60px;
+}
+
+.admin-header-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.admin-wrapper h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #172033;
+}
+
+.admin-btn-primario {
+    background: #0077ff;
+    color: white;
+
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    font-weight: 600;
+    font-size: .9rem;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.admin-btn-primario:hover {
+    background: #005fd1;
+}
+
+.admin-filtros {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-bottom: 18px;
+}
+
+.admin-filtros select,
+.admin-filtros input {
+    padding: 9px 12px;
+
+    border-radius: 8px;
+    border: 1px solid #ddd;
+
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem;
+}
+
+/* ================= TABLA ================= */
+.admin-tabla-contenedor {
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+
+    overflow-x: auto;
+}
+
+table.admin-tabla {
+    width: 100%;
+    border-collapse: collapse;
+
+    font-size: .88rem;
+}
+
+table.admin-tabla th {
+    text-align: left;
+
+    padding: 14px 16px;
+
+    background: #f8f9fb;
+    color: #70798b;
+
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+
+    white-space: nowrap;
+}
+
+table.admin-tabla td {
+    padding: 12px 16px;
+
+    border-top: 1px solid #eee;
+
+    vertical-align: middle;
+}
+
+table.admin-tabla tr:hover td {
+    background: #fafbfc;
+}
+
+.admin-badge {
+    display: inline-block;
+
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.badge-activo {
+    background: #e3f9e5;
+    color: #1e8a34;
+}
+
+.badge-inactivo {
+    background: #f1f1f1;
+    color: #888;
+}
+
+.badge-stock-bajo {
+    background: #fde8e8;
+    color: #c81e1e;
+}
+
+.admin-acciones {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-acciones button {
+    border: none;
+    background: #f2f4f8;
+
+    padding: 6px 12px;
+
+    border-radius: 6px;
+
+    font-size: .8rem;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.admin-acciones .btn-editar:hover {
+    background: #e6f0ff;
+    color: #0059d1;
+}
+
+.admin-acciones .btn-eliminar:hover {
+    background: #fde8e8;
+    color: #c81e1e;
+}
+
+.admin-cargando,
+.admin-vacio {
+    padding: 40px;
+    text-align: center;
+    color: #70798b;
+}
+
+.admin-estado-select {
+    padding: 6px 10px;
+
+    border-radius: 6px;
+    border: 1px solid #ddd;
+
+    font-size: .82rem;
+}
+
+.admin-paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 18px;
+
+    font-size: .85rem;
+    color: #70798b;
+}
+
+.admin-paginacion button {
+    border: none;
+    background: white;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+
+    cursor: pointer;
+}
+
+.admin-paginacion button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+/* ================= MODAL FORMULARIO ================= */
+.admin-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .5);
+
+    display: none;
+
+    z-index: 1002;
+}
+
+.admin-modal {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    width: 92%;
+    max-width: 420px;
+
+    padding: 26px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
+
+    display: none;
+
+    z-index: 1003;
+
+    max-height: 88vh;
+    overflow-y: auto;
+}
+
+.admin-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.admin-modal-header button {
+    border: none;
+    background: #f2f2f2;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+#form-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#form-producto label {
+    font-size: .82rem;
+    font-weight: 600;
+
+    margin-top: 8px;
+}
+
+#form-producto input,
+#form-producto select {
+    padding: 10px;
+
+    border-radius: 8px;
+    border: 1px solid #ddd;
+
+    font-family: 'Inter', sans-serif;
+}
+
+#form-producto button {
+    margin-top: 16px;
+
+    padding: 11px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0077ff;
+    color: white;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#form-producto button:hover {
+    background: #005fd1;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+
+    .admin-topbar {
+        padding: 15px 20px;
+    }
+
+    .admin-wrapper {
+        padding: 25px 12px 40px;
+    }
+}

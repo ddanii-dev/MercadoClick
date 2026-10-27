@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MercadoClick - Productos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ---------------- HEADER ---------------- -->
+    <header>
+        <img class="logo" src="assets/images/logo.png" alt="Logo MercadoClick">
+
+        <nav>
+            <a href="#">INICIO</a>
+            <a href="#">PRODUCTOS</a>
+            <a href="#" onclick="toggleCarrito()">CARRITO</a>
+            <a href="#">CONTACTO</a>
+            <a href="#">NOSOTROS</a>
+        </nav>
+
+        <div class="usuario-menu" id="usuario-menu">
+            <a href="pages/login.html" id="login-link">Iniciar sesión</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Las mejores ofertas del día</h2>
+            <p>Compra fácil, rápido y seguro.</p>
+            <button>Ver ofertas</button>
+        </div>
+    </section>
+
+    <!-- ---------------- FILTROS ---------------- -->
+    <div class="filtros">
+        <input type="text" id="buscar" placeholder="Buscar productos...">
+        <select id="categoria">
+            <option value="todos">Todas las categorías</option>
+            <option value="Lácteos">Lácteos</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Bebidas">Bebidas</option>
+        </select>
+        <select id="ordenar">
+            <option value="ninguno">Ordenar por</option>
+            <option value="asc">Menor precio</option>
+            <option value="desc">Mayor precio</option>
+        </select>
+    </div>
+
+    <!-- ---------------- PRODUCTOS ---------------- -->
+    <div class="contenedor-productos" id="lista-productos"></div>
+
+    <!-- BOTÓN CARRITO -->
+    <div id="btn-carrito" onclick="toggleCarrito()">
+        🛒
+        <span id="contador">0</span>
+    </div>
+
+    <!-- ---------------- overlay ---------------- -->
+    <div id="overlay" onclick="toggleCarrito()"></div>
+
+    <!-- ---------------- CARRITO LATERAL ---------------- -->
+    <aside id="carrito">
+        <div class="carrito-header">
+            <h2>Carrito de compras</h2>
+
+            <button class="cerrar-carrito" onclick="toggleCarrito()">
+                ✖
+            </button>
+        </div>
+
+        <div id="items-carrito"></div>
+        <div id="resumen-carrito">
+            <p id="subtotal"></p>
+            <p id="iva"></p>
+            <h3 id="total"></h3>
+        </div>
+        <button id="vaciar-carrito">
+            Vaciar carrito
+        </button>
+        <button id="finalizar-compra">
+            Finalizar compra
+        </button>
+    </aside>
+
+    <!-- ---------------- MODAL CHECKOUT ---------------- -->
+    <div id="overlay-checkout"></div>
+    <div id="modal-checkout">
+        <div class="checkout-header">
+            <h2>Finalizar compra</h2>
+            <button class="cerrar-checkout" onclick="cerrarCheckout()">✖</button>
+        </div>
+
+        <form id="form-checkout">
+            <label for="chk-nombre">Nombre completo</label>
+            <input type="text" id="chk-nombre" placeholder="Ej: María Pérez" maxlength="60">
+            <span class="error" id="error-nombre"></span>
+
+            <label for="chk-telefono">Teléfono (10 dígitos)</label>
+            <input type="text" id="chk-telefono" placeholder="Ej: 3001234567" maxlength="10">
+            <span class="error" id="error-telefono"></span>
+
+            <label for="chk-direccion">Dirección de entrega</label>
+            <input type="text" id="chk-direccion" placeholder="Ej: Calle 10 # 5-20" maxlength="100">
+            <span class="error" id="error-direccion"></span>
+
+            <label for="chk-fecha">Fecha deseada de entrega</label>
+            <input type="date" id="chk-fecha">
+            <span class="error" id="error-fecha"></span>
+
+            <label for="chk-pago">Forma de pago</label>
+            <select id="chk-pago">
+                <option value="">Selecciona una opción</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Transferencia">Transferencia</option>
+            </select>
+            <span class="error" id="error-pago"></span>
+
+            <button type="submit" id="btn-confirmar-compra">Confirmar compra</button>
+        </form>
+    </div>
+
+    <!-- ---------------- MODAL COMPROBANTE ---------------- -->
+    <div id="overlay-comprobante"></div>
+    <div id="modal-comprobante">
+        <div class="comprobante-header">
+            <h2>¡Compra realizada!</h2>
+            <button class="cerrar-comprobante" onclick="cerrarComprobante()">✖</button>
+        </div>
+        <div id="contenido-comprobante"></div>
+    </div>
+
+    <!-- ---------------- MODAL RESEÑAS ---------------- -->
+    <div id="overlay-resenas"></div>
+    <div id="modal-resenas">
+        <div class="resenas-header">
+
+            <h2 id="resenas-titulo">
+                Reseñas
+            </h2>
+
+            <button class="cerrar-resenas" onclick="cerrarResenas()">
+                ✖
+            </button>
+
+        </div>
+
+        <!-- LISTA DE RESEÑAS -->
+        <div id="contenido-resenas">
+
+            <p class="sin-resultados">
+                Cargando reseñas...
+            </p>
+
+        </div>
+
+        <!-- FORMULARIO -->
+        <form id="form-resena">
+            <h3>
+                Dejar una reseña
+            </h3>
+
+            <label for="resena-calificacion">
+                Calificación
+            </label>
+
+            <select id="resena-calificacion" required>
+
+                <option value="5">
+                    ★★★★★ (5)
+                </option>
+
+                <option value="4">
+                    ★★★★☆ (4)
+                </option>
+
+                <option value="3">
+                    ★★★☆☆ (3)
+                </option>
+
+                <option value="2">
+                    ★★☆☆☆ (2)
+                </option>
+
+                <option value="1">
+                    ★☆☆☆☆ (1)
+                </option>
+
+            </select>
+
+            <label for="resena-comentario">
+                Comentario
+            </label>
+
+            <textarea id="resena-comentario" maxlength="500" placeholder="¿Qué te pareció el producto?">
+            </textarea>
+
+            <button type="submit" id="btn-publicar-resena">
+
+                Publicar reseña
+            </button>
+
+            <p class="resenas-nota">
+
+                Debes haber comprado el producto
+                para poder dejar una reseña.
+
+            </p>
+
+        </form>
+    </div>
+
+
+    <!-- ---------------- FOOTER ---------------- -->
+    <footer>
+        <h3>MercadoClick</h3>
+
+        <p>Tu tienda virtual favorita.</p>
+
+        <p>© 2026 Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>
